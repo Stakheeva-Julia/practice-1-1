@@ -22,7 +22,13 @@ export function canWithdraw(state: AccountState): boolean {
 // Для frozen: "Счёт заморожен. Причина: <reason>. Баланс: <balance> руб."
 // Для closed: "Счёт закрыт с <closedAt>"
 export function getStatusMessage(state: AccountState): string {
-  // Напишите код здесь
+ if (state.status === "active") {
+    return `Счёт активен. Баланс: ${state.balance} руб.`;
+  }
+  if (state.status === "frozen") {
+    return `Счёт заморожен. Причина: ${state.reason}. Баланс: ${state.balance} руб.`;
+  }
+  return `Счёт закрыт с ${state.closedAt}`;
 }
 
 // Функция заморозки счёта
