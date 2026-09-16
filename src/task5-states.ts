@@ -35,5 +35,12 @@ export function getStatusMessage(state: AccountState): string {
 // Принимает активный счёт и причину, возвращает замороженный счёт
 // Если счёт не активен — возвращает его без изменений
 export function freezeAccount(state: AccountState, reason: string): AccountState {
-  // Напишите код здесь
+   if (state.status === "active") {
+    return {
+      status: "frozen",
+      balance: state.balance,
+      reason: reason,
+    };
+  }
+  return state;
 }
