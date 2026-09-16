@@ -9,7 +9,11 @@ export type AccountState =
 // Возвращает true только если счёт активен
 export function canWithdraw(state: AccountState): boolean {
   // Напишите код здесь
-  // Подсказка: используйте if / else if, проверяя поле status 
+    if (state.status === "active") {
+    return true;
+  }
+  return false;
+
 
 }
 
